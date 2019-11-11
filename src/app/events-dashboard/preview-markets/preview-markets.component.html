@@ -1,0 +1,13 @@
+<div class="c-preview-markets">
+
+    <div class="c-preview-markets__market" *ngFor="let market of eventMarkets; trackBy:generalMarketType">
+
+        <app-market-lines
+            class="c-preview-markets__market__lines"
+            [marketId]="market.id">
+        </app-market-lines>
+
+    </div>
+
+</div>
+

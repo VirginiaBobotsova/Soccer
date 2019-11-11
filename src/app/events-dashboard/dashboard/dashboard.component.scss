@@ -1,0 +1,17 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+.c-page-content {
+    width: 100%;
+    padding: 3rem 1rem;
+
+    @include media-breakpoint-up(lg) {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    @include media-breakpoint-up(xl) {
+        padding: 5rem 1rem;
+    }
+}

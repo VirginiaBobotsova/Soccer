@@ -1,0 +1,15 @@
+<div *ngFor="let line of newLines">
+
+    <div *ngIf="line.isVisible">
+
+        <app-line [lineId]="line.id"></app-line>
+
+    </div>
+
+    <div class="suspended" *ngIf="line.isSuspended">
+
+        <i class="fas fa-lock"></i>
+
+    </div>
+
+</div>

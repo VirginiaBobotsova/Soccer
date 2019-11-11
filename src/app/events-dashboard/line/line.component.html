@@ -1,0 +1,7 @@
+<div class="c-line" *ngIf="(line$ | async)?.isVisible">
+
+    <div class="c-line__point">{{(line$ | async)?.points}}</div>
+
+    <div class="c-line__price"  [ngClass]="status">{{(line$ | async)?.price}}</div>
+
+</div>
