@@ -62,6 +62,8 @@ export class SignalRService {
 
     this.connection.start().catch(err => console.error(err.toString()));
 
+    // runs when server-side code calls it using the SendAsync method.
+    // TODO replace "SubscribeToGroup" with the name of the JavaScript client method
     this.connection.on('SubscribeToGroup', (message: any) => {
       console.log('UpdateMarket' + message);
       // TODO Update store
