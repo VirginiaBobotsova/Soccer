@@ -10,18 +10,15 @@ import { CategoryQuery } from '@app/events-dashboard/state/category/category.que
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryComponent implements OnInit {
-    category$: Observable<Category>;
-    categoryMarkets = ['1X2', 'HDP', 'O/U'];
+  category$: Observable<Category>;
+  categoryMarkets = ['1X2', 'HDP', 'O/U'];
 
-    @Input()
-    categoryId: string;
+  @Input()
+  categoryId: string;
 
-    constructor(
-        private categoryQuery: CategoryQuery,
-    ) { }
+  constructor(private categoryQuery: CategoryQuery) {}
 
-    ngOnInit() {
-        this.category$ = this.categoryQuery.selectEntity((entity: Category)=> entity.id === this.categoryId);
-
-    }
+  ngOnInit() {
+    this.category$ = this.categoryQuery.selectEntity((entity: Category) => entity.id === this.categoryId);
+  }
 }

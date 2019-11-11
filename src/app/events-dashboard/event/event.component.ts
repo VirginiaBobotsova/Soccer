@@ -10,18 +10,16 @@ import { Observable, Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventComponent implements OnInit {
-    event$: Observable<SoccerEvent>;
+  event$: Observable<SoccerEvent>;
 
-    @Input()
-    eventId: string;
+  @Input()
+  eventId: string;
 
-    private subscription: Subscription;
+  private subscription: Subscription;
 
-    constructor(
-        private eventQuery: EventQuery,
-    ) { }
+  constructor(private eventQuery: EventQuery) {}
 
-    ngOnInit() {
-        this.event$ = this.eventQuery.selectEntity((entity: SoccerEvent)=> entity.id === this.eventId);
-    }
+  ngOnInit() {
+    this.event$ = this.eventQuery.selectEntity((entity: SoccerEvent) => entity.id === this.eventId);
+  }
 }

@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/main.scss",
-              "../node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss"
+
             ],
             "scripts": []
           },

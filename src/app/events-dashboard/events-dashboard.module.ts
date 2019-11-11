@@ -12,19 +12,19 @@ import { MarketLinesComponent } from './market-lines/market-lines.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
-    declarations: [
-        DashboardComponent,
-        PreviewMarketsComponent,
-        EventComponent,
-        CategoryComponent,
-        LineComponent,
-        MarketLinesComponent],
-    imports: [
-        CommonModule,
-        SharedModule,
-        ScrollingModule,
-        AngularFontAwesomeModule,
-        EventsDashboardRoutingModule
-    ]
+  declarations: [
+    DashboardComponent,
+    PreviewMarketsComponent,
+    EventComponent,
+    CategoryComponent,
+    LineComponent,
+    MarketLinesComponent
+  ],
+  imports: [
+      CommonModule, 
+      SharedModule, 
+      ScrollingModule,
+      AngularFontAwesomeModule,
+      EventsDashboardRoutingModule]
 })
-export class EventsDashboardModule { }
+export class EventsDashboardModule {}

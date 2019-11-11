@@ -1,17 +1,14 @@
 <div class="c-event">
+  <div class="c-event__start-time">
+    <div>{{ (event$ | async)?.startTime | customDate }}</div>
+    <div *ngIf="isLive">Live</div>
+  </div>
 
-    <div class="c-event__start-time">
-        <div>{{(event$ | async)?.startTime | customDate}}</div>
-        <div *ngIf="isLive">Live</div>
-    </div>
+  <div class="c-event__teams">
+    <div class="team">{{ (event$ | async)?.homeTeamName }}</div>
+    <div class="team">{{ (event$ | async)?.awayTeamName }}</div>
+    <div class="team">Draw</div>
+  </div>
 
-    <div class="c-event__teams">
-        <div class="team">{{(event$ | async)?.homeTeamName}}</div>
-        <div class="team">{{(event$ | async)?.awayTeamName}}</div>
-        <div class="team">Draw</div>
-    </div>
-
-    <app-preview-markets class="c-event__markets" [markets]="(event$ | async)?.previewMarkets"></app-preview-markets>
-
+  <app-preview-markets class="c-event__markets" [markets]="(event$ | async)?.previewMarkets"></app-preview-markets>
 </div>
-

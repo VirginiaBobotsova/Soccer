@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
 import { Line } from '@app/events-dashboard/state/line/line.model';
 
-export interface LineState extends EntityState<Line> { }
+export interface LineState extends EntityState<Line> {}
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 @StoreConfig({
-    name: 'lines'
+  name: 'lines'
 })
 export class LineStore extends EntityStore<LineState> {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }

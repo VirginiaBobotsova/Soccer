@@ -1,31 +1,31 @@
 .c-line {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-    padding: 3px 0;
+  padding: 3px 0;
 
-    &__point {
-        font-size: 14px;
-        color: #4d4dff;
-        margin: 0 5px;
+  &__point {
+    font-size: 14px;
+    color: #4d4dff;
+    margin: 0 5px;
+  }
+
+  &__price {
+    width: 45px;
+    text-align: center;
+    font-size: 14px;
+
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+
+    &.down {
+      background-color: red;
     }
 
-    &__price {
-        width: 45px;
-        text-align: center;
-        font-size: 14px;
-
-        border: 1px solid #d6d6d6;
-        border-radius: 3px;
-
-        &.down {
-            background-color: red;
-        }
-
-        &.up {
-            background-color: green;
-        }
+    &.up {
+      background-color: green;
     }
+  }
 }

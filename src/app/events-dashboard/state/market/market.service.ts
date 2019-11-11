@@ -6,7 +6,7 @@ import { Market } from '@app/events-dashboard/state/market/market.model';
   providedIn: 'root'
 })
 export class MarketService {
-    categories$: Observable<Array<Market>>;
+  categories$: Observable<Array<Market>>;
 
-    constructor() { }
+  constructor() {}
 }

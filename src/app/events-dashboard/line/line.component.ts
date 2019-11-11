@@ -10,17 +10,15 @@ import { LineQuery } from '@app/events-dashboard/state/line/line.query';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineComponent implements OnInit {
-    line$: Observable<Line>;
-    status = '';
+  line$: Observable<Line>;
+  status = '';
 
-    @Input()
-    lineId: number;
+  @Input()
+  lineId: number;
 
-    constructor(
-        private lineQuery: LineQuery
-    ) {}
+  constructor(private lineQuery: LineQuery) {}
 
-    ngOnInit() {
-        this.line$ = this.lineQuery.selectEntity((entity: Line)=> entity.id === this.lineId);
-    }
+  ngOnInit() {
+    this.line$ = this.lineQuery.selectEntity((entity: Line) => entity.id === this.lineId);
+  }
 }

@@ -1,13 +1,7 @@
 <div class="c-page-content" *ngIf="categories$">
-
-    <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="100px" >
-
-        <ng-container *cdkVirtualFor="let category of categories$ | async">
-
-            <app-category [categoryId]="category.id"></app-category>
-
-        </ng-container>
-
-    </cdk-virtual-scroll-viewport>
-
+  <cdk-virtual-scroll-viewport style="height: 800px" itemSize="100px">
+    <ng-container *cdkVirtualFor="let category of categories$ | async">
+      <app-category [categoryId]="category.id"></app-category>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
 </div>

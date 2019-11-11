@@ -8,9 +8,8 @@ describe('PreviewMarketsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreviewMarketsComponent ]
-    })
-    .compileComponents();
+      declarations: [PreviewMarketsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

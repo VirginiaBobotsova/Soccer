@@ -6,8 +6,7 @@ import { SoccerEvent } from '@app/events-dashboard/state/event/event.model';
   providedIn: 'root'
 })
 export class EventService {
-    categories$: Observable<Array<SoccerEvent>>;
+  categories$: Observable<Array<SoccerEvent>>;
 
-    constructor() { }
-
+  constructor() {}
 }

@@ -5,35 +5,33 @@ import { Line, createLine } from '@app/events-dashboard/state/line/line.model';
   name: 'reversePoints'
 })
 export class ReversePointsPipe implements PipeTransform {
+  transform(value: Line[], marketType: number): any {
+    if (value && marketType === 2) {
+      const newLines: Line[] = [];
+      const homeLine = value.filter((line: Line) => line.outcomeType === 1)[0];
+      const awayLine = value.filter((line: Line) => line.outcomeType === 2)[0];
+      let reversedPoints = 0;
 
-    transform(value: Line[], marketType: number): any {
+      if (Math.sign(homeLine.points) === -1 || Math.sign(homeLine.points) === -0) {
+        reversedPoints = Math.abs(awayLine.points);
+      } else {
+        reversedPoints = -Math.abs(awayLine.points);
+      }
 
-        if (value && marketType === 2) {
-            const newLines: Line[] = [];
-            const homeLine = value.filter((line: Line) => line.outcomeType === 1)[0];
-            const awayLine = value.filter((line: Line) => line.outcomeType === 2)[0];
-            let reversedPoints = 0;
+      const newAwayLine = createLine({
+        outcomeType: 2,
+        price: awayLine.price,
+        points: reversedPoints,
+        isVisible: awayLine.isVisible,
+        isSuspended: awayLine.isSuspended
+      });
 
-            if (Math.sign(homeLine.points) === -1 || Math.sign(homeLine.points) === -0) {
-                reversedPoints = Math.abs(awayLine.points);
-            } else {
-                reversedPoints = -Math.abs(awayLine.points);
-            }
+      newLines.push(homeLine);
+      newLines.push(newAwayLine);
 
-            const newAwayLine = createLine({
-                outcomeType: 2,
-                price: awayLine.price,
-                points: reversedPoints,
-                isVisible: awayLine.isVisible,
-                isSuspended: awayLine.isSuspended
-                 });
-
-            newLines.push(homeLine);
-            newLines.push(newAwayLine);
-
-            return newLines;
-        } else {
-            return value;
-        }
+      return newLines;
+    } else {
+      return value;
     }
+  }
 }

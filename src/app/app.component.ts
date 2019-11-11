@@ -12,13 +12,11 @@ const log = new Logger('App');
 export class AppComponent implements OnInit {
   constructor() {}
 
-    ngOnInit() {
-        // Setup logger
-        // if (environment.production) {
-        // Logger.enableProductionMode();
-        // }
-
-        // log.debug('init');
-
-    }
+  ngOnInit() {
+    // Setup logger
+    // if (environment.production) {
+    // Logger.enableProductionMode();
+    // }
+    // log.debug('init');
+  }
 }

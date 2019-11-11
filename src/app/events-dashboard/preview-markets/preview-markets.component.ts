@@ -10,31 +10,28 @@ import { MarketStore } from '@app/events-dashboard/state/market/market.store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewMarketsComponent implements OnInit {
-    eventMarkets: Market[];
+  eventMarkets: Market[];
 
-    @Input()
-    markets: Market[];
+  @Input()
+  markets: Market[];
 
-    constructor(
-        private marketStore: MarketStore
-    ) { }
+  constructor(private marketStore: MarketStore) {}
 
-    ngOnInit() {
-        this.eventMarkets = this.getEventMarkets();
-        this.marketStore.add(this.eventMarkets);
-    }
+  ngOnInit() {
+    this.eventMarkets = this.getEventMarkets();
+    this.marketStore.add(this.eventMarkets);
+  }
 
-    generalMarketType(index: any, market: Market) {
-        return market.generalMarketType;
-    }
+  generalMarketType(index: any, market: Market) {
+    return market.generalMarketType;
+  }
 
-    private getEventMarkets() {
-        return this.markets
-            .filter(obj => {
-                if (obj.periodType === 1 && obj.periodNumber == null) {
-                    this.marketStore.add(obj);
-                    return obj;
-                }
-            });
-    }
+  private getEventMarkets() {
+    return this.markets.filter(obj => {
+      if (obj.periodType === 1 && obj.periodNumber == null) {
+        this.marketStore.add(obj);
+        return obj;
+      }
+    });
+  }
 }

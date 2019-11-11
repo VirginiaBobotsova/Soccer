@@ -1,25 +1,15 @@
 <div class="c-category" *ngIf="category$">
+  <div class="c-category__title">
+    <h6 class="category-heading">{{ (category$ | async)?.categoryName }} / {{ (category$ | async)?.leagueName }}</h6>
+  </div>
 
-    <div class="c-category__title">
-
-        <h6 class="category-heading">{{(category$ | async)?.categoryName}} / {{(category$ | async)?.leagueName}}</h6>
-
+  <div class="c-category__markets">
+    <div class="c-category__markets__container">
+      <h6 class="category-market" *ngFor="let market of categoryMarkets">{{ market }}</h6>
     </div>
+  </div>
 
-    <div class="c-category__markets">
-
-        <div class="c-category__markets__container">
-
-            <h6 class="category-market" *ngFor="let market of categoryMarkets">{{market}}</h6>
-
-        </div>
-
-    </div>
-
-    <div class="c-category__event" *ngFor="let event of (category$ | async)?.events">
-
-        <app-event [eventId]=event.id></app-event>
-
-    </div>
-
+  <div class="c-category__event" *ngFor="let event of (category$ | async)?.events">
+    <app-event [eventId]="event.id"></app-event>
+  </div>
 </div>
