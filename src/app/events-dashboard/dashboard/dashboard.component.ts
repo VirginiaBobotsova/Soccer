@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '@app/events-dashboard/state/category/category.model';
 import { CategoryService } from '@app/events-dashboard/state/category/category.service';
@@ -11,15 +11,19 @@ import { CategoryQuery } from '@app/events-dashboard/state/category/category.que
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
-  categories$: Observable<Category[]>;
-  selectLoading$: Observable<boolean>;
-  categories: any[];
+    categories$: Observable<Category[]>;
+    selectLoading$: Observable<boolean>;
 
-  constructor(private categoryService: CategoryService, private categoryQuery: CategoryQuery) {}
+    constructor(
+        private _categoryService: CategoryService,
+        private _categoryQuery: CategoryQuery,
+        private _cdr: ChangeDetectorRef
+        ) {}
 
-  ngOnInit() {
-    this.categoryService.getEventsByCategory();
-    this.categories$ = this.categoryQuery.selectAll();
-    this.selectLoading$ = this.categoryQuery.selectLoading();
-  }
+    ngOnInit() {
+        this._categoryService.getEventsByCategory();
+        this.categories$ = this._categoryQuery.selectAll();
+        this._cdr.detectChanges();
+        this.selectLoading$ = this._categoryQuery.selectLoading();
+    }
 }

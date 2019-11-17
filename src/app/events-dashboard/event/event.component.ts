@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SoccerEvent } from '@app/events-dashboard/state/event/event.model';
-import { EventQuery } from '@app/events-dashboard/state/event/event.query';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event',
@@ -10,16 +9,11 @@ import { Observable, Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventComponent implements OnInit {
-  event$: Observable<SoccerEvent>;
+    event$: Observable<SoccerEvent>;
 
-  @Input()
-  eventId: string;
+    @Input()
+    event: Event;
 
-  private subscription: Subscription;
-
-  constructor(private eventQuery: EventQuery) {}
-
-  ngOnInit() {
-    this.event$ = this.eventQuery.selectEntity((entity: SoccerEvent) => entity.id === this.eventId);
-  }
+    ngOnInit() {
+    }
 }

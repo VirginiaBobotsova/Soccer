@@ -10,6 +10,7 @@ import { SharedModule } from '@app/shared';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EventsDashboardModule } from '@app/events-dashboard/events-dashboard.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { EventsDashboardModule } from '@app/events-dashboard/events-dashboard.mo
     CoreModule,
     SharedModule,
     EventsDashboardModule,
+    AngularFontAwesomeModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

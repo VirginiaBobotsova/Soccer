@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Line } from '@app/events-dashboard/state/line/line.model';
-import { Observable } from 'rxjs';
-import { LineQuery } from '@app/events-dashboard/state/line/line.query';
-
+import { LineService } from '@app/events-dashboard/state/line/line.service';
 @Component({
   selector: 'app-line',
   templateUrl: './line.component.html',
@@ -10,15 +8,18 @@ import { LineQuery } from '@app/events-dashboard/state/line/line.query';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineComponent implements OnInit {
-  line$: Observable<Line>;
-  status = '';
+    priceStatus = 'unchanged';
 
-  @Input()
-  lineId: number;
+    @Input()
+    line: Line;
 
-  constructor(private lineQuery: LineQuery) {}
+    constructor (
+        private _lineService: LineService,
+        private _cdr: ChangeDetectorRef
+    ) {}
 
-  ngOnInit() {
-    this.line$ = this.lineQuery.selectEntity((entity: Line) => entity.id === this.lineId);
-  }
+    ngOnInit() {
+        this.priceStatus = this._lineService.updateLine(this.line);
+        this._cdr.detectChanges();
+    }
 }

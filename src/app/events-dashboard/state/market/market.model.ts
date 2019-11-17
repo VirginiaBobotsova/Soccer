@@ -7,4 +7,5 @@ export interface Market {
   periodType: 1;
   periodNumber: null;
   lines: Line[];
+  eventId: string;
 }

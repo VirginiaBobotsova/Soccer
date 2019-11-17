@@ -21,8 +21,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MarketLinesComponent
   ],
   imports: [
-      CommonModule, 
-      SharedModule, 
+      CommonModule,
+      SharedModule,
       ScrollingModule,
       AngularFontAwesomeModule,
       EventsDashboardRoutingModule]

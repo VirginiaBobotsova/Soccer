@@ -1,37 +1,29 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Line, createLine } from '@app/events-dashboard/state/line/line.model';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Market } from '@app/events-dashboard/state/market/market.model';
-import { MarketStore } from '@app/events-dashboard/state/market/market.store';
-
+import { MarketQuery } from '@app/events-dashboard/state/market/market.query';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-preview-markets',
   templateUrl: './preview-markets.component.html',
-  styleUrls: ['./preview-markets.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./preview-markets.component.scss']
 })
 export class PreviewMarketsComponent implements OnInit {
-  eventMarkets: Market[];
+    eventMarkets: Observable<Market[]>;
 
-  @Input()
-  markets: Market[];
+    @Input()
+    eventId: string;
 
-  constructor(private marketStore: MarketStore) {}
+    constructor(
+        private _marketQuery: MarketQuery
+    ) {}
 
-  ngOnInit() {
-    this.eventMarkets = this.getEventMarkets();
-    this.marketStore.add(this.eventMarkets);
-  }
+    ngOnInit() {
+        this.eventMarkets = this._marketQuery.selectAll({
+            filterBy: entity => entity.eventId === this.eventId
+        });
+    }
 
-  generalMarketType(index: any, market: Market) {
-    return market.generalMarketType;
-  }
-
-  private getEventMarkets() {
-    return this.markets.filter(obj => {
-      if (obj.periodType === 1 && obj.periodNumber == null) {
-        this.marketStore.add(obj);
-        return obj;
-      }
-    });
-  }
+    generalMarketType(index: any, market: Market) {
+        return market.generalMarketType;
+    }
 }
