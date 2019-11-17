@@ -1,4 +1,7 @@
 <div class="c-line" *ngIf="line.isVisible">
-  <div class="c-line__point">{{ line.points }}</div>
-  <div class="c-line__price" [ngClass]="{'up':priceStatus=='up', 'down':priceStatus=='down' }">{{ line.price }}</div>
+    <div class="c-line__point">{{ line.points }}</div>
+    <div class="c-line__price" 
+        [ngClass]="{'up':priceStatus=='up', 'down':priceStatus=='down' }">
+        {{ line.price }}
+    </div>
 </div>
