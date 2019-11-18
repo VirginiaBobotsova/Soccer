@@ -1,7 +1,7 @@
 <div class="c-event">
   <div class="c-event__start-time">
     <div>{{ event.startTime | customDate }}</div>
-    <div *ngIf="isLive">Live</div>
+    <div class="c-event__is-live" *ngIf="event.isLive">Live</div>
   </div>
   <div class="c-event__teams">
     <div class="team">{{ event.homeTeamName }}</div>
