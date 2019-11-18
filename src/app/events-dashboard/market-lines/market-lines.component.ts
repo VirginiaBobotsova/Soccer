@@ -25,9 +25,7 @@ export class MarketLinesComponent implements OnInit, OnDestroy {
     private _reversePoints: ReversePointsPipe,
     private _marketQuery: MarketQuery,
     private _marketService: MarketService,
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.market$ = this._marketQuery.selectEntity((entity: Market) => entity.id === this.marketId);

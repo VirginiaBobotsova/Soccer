@@ -52,6 +52,7 @@ export class SignalRService {
 
                 if(market) {
                     let marketLines:Line[] = [];
+console.log(market.generalMarketType);
 
                     if(market.lines.length > 0)  {
                         marketLines = market.lines.filter(l => l.lineId !== data.lineId);

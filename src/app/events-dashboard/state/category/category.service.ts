@@ -11,7 +11,6 @@ import { MarketStore } from '@app/events-dashboard/state/market/market.store';
   providedIn: 'root'
 })
 export class CategoryService {
-    categories$: Observable<Array<Category>>;
 
     constructor(
         private _restService: RestService,
@@ -51,6 +50,9 @@ export class CategoryService {
                 });
 
                 if (category.events.length > 0) {
+                    category.events
+                    .sort((a, b) => (new Date(a.startTime) as any) - (new Date(b.startTime) as any));
+
                     categories.push(category);
                 }
             });

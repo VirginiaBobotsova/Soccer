@@ -5,7 +5,7 @@ import { Line, createLine } from '@app/events-dashboard/state/line/line.model';
 })
 export class LineService {
 
-    public updateLine(line: Line) {
+    public updatePrice(line: Line) {
         let priceStatus = '';
 
         if (line.isUpdated) {
@@ -15,25 +15,6 @@ export class LineService {
                 priceStatus = 'down';
             }
         }
-
-        setTimeout(() => {
-            line = createLine({
-                id: line.id,
-                lineId: line.lineId,
-                marketId: line.marketId,
-                outcomeType: line.outcomeType,
-                price: line.price,
-                oldPrice: line.oldPrice,
-                points: line.points,
-                isMain:line.isMain,
-                isUpdated: false,
-                isVisible: line.isVisible,
-                isSuspended: line.isSuspended
-            });
-
-            priceStatus = 'unchanged';
-            
-        }, 3000);
 
         return priceStatus;
     }
