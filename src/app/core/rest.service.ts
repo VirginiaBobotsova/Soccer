@@ -7,8 +7,7 @@ import { map } from 'rxjs/internal/operators/map';
   providedIn: 'root'
 })
 export class RestService {
-    private _getEventsEndpoint =
-        'https://luxbet88.com/api/sports/1/upcoming?_&viewTypes=0&viewTypes=1&viewTypes=2&viewTypes=100&viewTypes=101&viewTypes=102&maxLevel=1&timeSpan=24';
+    private _getEventsEndpoint = '';
 
     constructor(private _httpClient: HttpClient) {}
 
